@@ -1,0 +1,22 @@
+{
+  "name": "tm-gulp",
+  "version": "0.0.1",
+  "description": "Repo to hold gulp scripts for TM sites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamMentor/TM_Gulp.git"
+  },
+  "author": "Dinis Cruz <dinis.cruz@owasp.org> (http://blog.diniscruz.com/)",
+  "license": "SEE LICENSE IN TM_Website repo",
+  "bugs": {
+    "url": "https://github.com/TeamMentor/TM_Gulp/issues"
+  },
+  "homepage": "https://github.com/TeamMentor/TM_Gulp#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
