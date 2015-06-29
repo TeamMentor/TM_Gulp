@@ -11,12 +11,25 @@
     "url": "git+https://github.com/TeamMentor/TM_Gulp.git"
   },
   "author": "Dinis Cruz <dinis.cruz@owasp.org> (http://blog.diniscruz.com/)",
-  "license": "SEE LICENSE IN TM_Website repo",
+  "license": "LicenseRef-TM-Commercial",
   "bugs": {
     "url": "https://github.com/TeamMentor/TM_Gulp/issues"
   },
   "homepage": "https://github.com/TeamMentor/TM_Gulp#readme",
   "devDependencies": {
     "gulp": "^3.9.0"
+  },
+  "dependencies": {
+    "coffee-script": "^1.9.3",
+    "fluentnode": "latest",
+    "gulp-changed": "^1.2.1",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^2.0.1",
+    "gulp-jade": "^1.0.1",
+    "gulp-task-listing": "^1.0.1",
+    "mocha": "^2.2.5",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.1"
   }
 }
