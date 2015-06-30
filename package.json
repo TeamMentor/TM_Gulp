@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/TeamMentor/TM_Gulp#readme",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-uglify": "^1.2.0"
   },
   "dependencies": {
     "coffee-script": "^1.9.3",

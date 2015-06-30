@@ -1,9 +1,9 @@
 require 'fluentnode'
-gulp       = require 'gulp'
-coffee     = require 'gulp-coffee'
-debug      = require 'gulp-debug'
-plumber    = require('gulp-plumber');
-changed    = require('gulp-changed');
+gulp    = require 'gulp'
+coffee  = require 'gulp-coffee'
+debug   = require 'gulp-debug'
+plumber = require 'gulp-plumber'
+changed = require 'gulp-changed'
 
 base_Source_Folder = '../../'
 base_Target_Folder = '../../.dist'
