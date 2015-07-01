@@ -29,6 +29,9 @@
     "gulp-debug": "^2.0.1",
     "gulp-jade": "^1.0.1",
     "gulp-task-listing": "^1.0.1",
+    "jade": "^1.11.0",
+    "jstransformer-marked": "0.0.1",
+    "marked": "^0.3.3",
     "mocha": "^2.2.5",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.1"
