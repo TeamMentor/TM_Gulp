@@ -24,10 +24,10 @@ concat_Lib_File  = 'js/lib.js'
 gulp.task 'combine-js', ->
   source_Files = [
     angular_Project.path_Combine 'bower_components/angular/angular.js'
-    #angular_Project.path_Combine 'bower_components/angular-ui-select/dist/select.js'
     angular_Project.path_Combine 'bower_components/angular-foundation-bower/mm-foundation-tpls.min.js'
     angular_Project.path_Combine 'bower_components/coffee-script/extras/coffee-script.js'
-    angular_Project.path_Combine 'bower_components/coffee-script/jade.js'
+    angular_Project.path_Combine 'bower_components/jade/jade.js'
+    angular_Project.path_Combine 'bower_components/jade/runtime.js'
   ]
 
 
