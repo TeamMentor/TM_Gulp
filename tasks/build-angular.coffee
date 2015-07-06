@@ -12,16 +12,20 @@ runSequence = require 'run-sequence'
 
 base_Source_Folder = '../../'
 angular_Project    = base_Source_Folder.path_Combine 'code/TM_Angular'
-target_Folder      = base_Source_Folder.path_Combine '.dist/code/TM_Angular/public'
+target_Folder      = base_Source_Folder.path_Combine 'code/TM_Angular/build'
 jade_Files         = base_Source_Folder.path_Combine 'code/TM_Angular/src/jade/**/*.jade'
 coffee_Files       = base_Source_Folder.path_Combine 'code/TM_Angular/src/coffee/**/*.coffee'
 
-concat_Lib_File  = 'js/lib.js'
 concat_Code_File = 'js/code.js'
+concat_Css_File  = 'css/lib.css'
+concat_Lib_File  = 'js/lib.js'
+
 
 gulp.task 'combine-js', ->
   source_Files = [
     angular_Project.path_Combine 'bower_components/angular/angular.js'
+    #angular_Project.path_Combine 'bower_components/angular-ui-select/dist/select.js'
+    angular_Project.path_Combine 'bower_components/angular-foundation-bower/mm-foundation-tpls.min.js'
     angular_Project.path_Combine 'bower_components/coffee-script/extras/coffee-script.js'
     angular_Project.path_Combine 'bower_components/coffee-script/jade.js'
   ]
@@ -31,6 +35,14 @@ gulp.task 'combine-js', ->
       #.pipe debug({title: "[combine-angular-js]"})
       .pipe concat concat_Lib_File
       #.pipe uglify()                               # this takes a good number of secs to go from 1M to 300k so it might be better to use the minified versions directly
+      .pipe gulp.dest target_Folder
+
+gulp.task 'combine-css', ->
+  source_Files = [
+    #angular_Project.path_Combine 'bower_components/angular-ui-select/dist/select.css'
+  ]
+  gulp.src source_Files
+      .pipe concat concat_Css_File
       .pipe gulp.dest target_Folder
 
 gulp.task 'compile-jade', ->
@@ -49,10 +61,9 @@ gulp.task 'compile-coffee', ->
       .pipe gulp.dest target_Folder
 
 gulp.task 'angular', ->
-  runSequence [ 'combine-js', 'compile-jade', 'compile-coffee']
+  runSequence [ 'combine-js', 'combine-css', 'compile-jade', 'compile-coffee']
 
 gulp.task 'angular-watch', ['angular'], ()->
-  #gulp.watch jade_Files, ['angular']
   gulp.watch jade_Files  , ['compile-jade']
   gulp.watch coffee_Files, ['compile-coffee']
 

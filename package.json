@@ -28,6 +28,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-debug": "^2.0.1",
     "gulp-jade": "^1.0.1",
+    "gulp-plumber": "^1.0.1",
     "gulp-task-listing": "^1.0.1",
     "jade": "^1.11.0",
     "jstransformer-marked": "0.0.1",
