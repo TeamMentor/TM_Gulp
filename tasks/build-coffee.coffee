@@ -14,7 +14,6 @@ coffee_Folders = ['./code/TM_Website/src'
                   './code/TM_GraphDB/test']
 
 convert_Coffee = (source_Folder, target_Folder)->
-
   gulp.src source_Folder
       .pipe plumber()
       .pipe changed target_Folder, {extension: '.js'}

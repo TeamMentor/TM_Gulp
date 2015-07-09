@@ -1,5 +1,6 @@
 require 'fluentnode'
 gulp        = require 'gulp'
+changed     = require 'gulp-changed'
 coffee      = require 'gulp-coffee'
 jade        = require 'gulp-jade'
 concat      = require 'gulp-concat'
@@ -25,12 +26,13 @@ concat_Lib_File     = 'js/lib.js'
 
 gulp.task 'combine-js', ->
   source_Files = [
-    angular_Project.path_Combine 'bower_components/angular/angular.js'
+    angular_Project.path_Combine 'bower_components/angular/angular.min.js'
     angular_Project.path_Combine 'bower_components/angular-foundation-bower/mm-foundation-tpls.min.js'
-    angular_Project.path_Combine 'bower_components/coffee-script/extras/coffee-script.js'
-    angular_Project.path_Combine 'bower_components/jade/jade.js'
+    #angular_Project.path_Combine 'bower_components/coffee-script/extras/coffee-script.js'
+    #angular_Project.path_Combine 'bower_components/jade/jade.js'
     angular_Project.path_Combine 'bower_components/jade/runtime.js'
     angular_Project.path_Combine 'bower_components/angular-slider/slider.js'
+    angular_Project.path_Combine 'bower_components/angular-ui-router/angular-ui-router.min.js'
   ]
 
 
@@ -50,11 +52,13 @@ gulp.task 'combine-css', ->
       .pipe gulp.dest target_Folder
 
 gulp.task 'compile-jade', ->
+  target_Folder_Html = target_Folder.path_Combine 'html'
   gulp.src jade_Files
-      #.pipe debug({title: "[#{jade_Files}]"})
       .pipe plumber()
+      .pipe changed(target_Folder_Html, {extension: '.html'})
+      #.pipe debug({title: "[compile-jade]"})
       .pipe jade()
-      .pipe gulp.dest target_Folder.path_Combine 'html'
+      .pipe gulp.dest target_Folder_Html
 
 gulp.task 'compile-jade-components',->
   # this needs to be converted into a gulp plugin (or find one that works)
