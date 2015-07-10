@@ -22,5 +22,4 @@ gulp.task 'mocha', () ->
 
 gulp.task 'mocha-watch', [ 'mocha'], ()->
   for code_Folder in code_Folders
-    console.log code_Folder
     gulp.watch code_Folders, ['coffee', 'mocha']

@@ -18,7 +18,7 @@ convert_Coffee = (source_Folder, target_Folder)->
   gulp.src source_Folder
       .pipe plumber()
       .pipe changed target_Folder, {extension: '.js'}
-      .pipe debug({title: "[#{target_Folder}]"})
+      #.pipe debug({title: "[#{target_Folder}]"})
       .pipe coffee()
       .pipe gulp.dest target_Folder
 

@@ -73,8 +73,6 @@ gulp.task 'compile-jade-components',->
   target_File = target_Folder.path_Combine(concat_Jade_Js_File)
   jade_Js.save_As target_File
 
-  #"component jade files saved as #{target_File}".log()
-
   return
   #options = { client: true }
   #gulp.src jade_Component_Files
