@@ -14,11 +14,14 @@ code_Folders = [tests_Folder, '../../code/TM_Angular/src/**/*']
 
 
 gulp.task 'mocha', () ->
-
+  console.log '....'
   gulp.src tests_Folder
       .pipe plumber()
       #.pipe debug({title: "[mocha]"})
-      .pipe mocha { reporter: 'dot'}
+      .pipe mocha { reporter: 'spec'}
+      .on "error", (err)->
+        log "[Mocha Error] #{err.message}"
+        @.emit('end')
 
 gulp.task 'mocha-watch', [ 'mocha'], ()->
   for code_Folder in code_Folders
