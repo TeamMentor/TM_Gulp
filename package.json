@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp" : "NODE_PATH=../../qa/TM_QA/node_modules gulp ",
+    "gulp-watch": "npm run gulp -- coffee-watch angular-watch",
     "gulp-all": "npm run gulp -- coffee-watch angular-watch  mocha-watch --silent"
   },
   "repository": {

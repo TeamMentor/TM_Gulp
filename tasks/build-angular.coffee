@@ -15,6 +15,7 @@ base_Source_Folder    = '../../'
 angular_Project       = base_Source_Folder.path_Combine 'code/TM_Angular'
 target_Folder         = base_Source_Folder.path_Combine 'code/TM_Angular/build'
 jade_Files            = base_Source_Folder.path_Combine 'code/TM_Angular/src/jade/**/*.jade'
+jade_Flare_Files      = base_Source_Folder.path_Combine 'code/TM_Flare//**/*.jade'
 jade_Component_Folder = base_Source_Folder.path_Combine 'code/TM_Flare/views'
 coffee_Files          = base_Source_Folder.path_Combine 'code/TM_Angular/src/coffee/**/*.coffee'
 
@@ -94,6 +95,7 @@ gulp.task 'angular', ->
   runSequence [ 'combine-js', 'combine-css', 'compile-jade-components' , 'compile-jade', 'compile-coffee']
 
 gulp.task 'angular-watch', ['angular'], ()->
-  gulp.watch jade_Files  , ['compile-jade']
-  gulp.watch coffee_Files, ['compile-coffee']
+  gulp.watch jade_Files       , ['compile-jade']
+  gulp.watch jade_Flare_Files , ['compile-jade']
+  gulp.watch coffee_Files     , ['compile-coffee']
 
