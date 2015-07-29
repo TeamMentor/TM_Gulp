@@ -52,14 +52,14 @@ gulp.task 'combine-css', ->
       .pipe concat concat_Css_File
       .pipe gulp.dest target_Folder
 
-gulp.task 'compile-jade', ->
-  target_Folder_Html = target_Folder.path_Combine 'html'
-  gulp.src jade_Files
-      .pipe plumber()
-      .pipe changed(target_Folder_Html, {extension: '.html'})
-      .pipe debug({title: "[compile-jade]"})
-      .pipe jade()
-      .pipe gulp.dest target_Folder_Html
+#gulp.task 'compile-jade', ->
+#  target_Folder_Html = target_Folder.path_Combine 'html'
+#  gulp.src jade_Files
+#      .pipe plumber()
+#      .pipe changed(target_Folder_Html, {extension: '.html'})
+#      .pipe debug({title: "[compile-jade]"})
+#      .pipe jade()
+#      .pipe gulp.dest target_Folder_Html
 
 gulp.task 'compile-jade-components',->
   # this needs to be converted into a gulp plugin (or find one that works)
@@ -94,10 +94,10 @@ gulp.task 'compile-coffee', ->
       .pipe gulp.dest target_Folder
 
 gulp.task 'angular', ->
-  runSequence [ 'combine-js', 'combine-css', 'compile-jade-components' , 'compile-jade', 'compile-coffee']
+  runSequence [ 'combine-js', 'combine-css', 'compile-jade-components' , 'compile-coffee']
 
 gulp.task 'angular-watch', ['angular'], ()->
-  gulp.watch jade_Files       , ['compile-jade']
-  gulp.watch jade_Flare_Files , ['compile-jade']
+#  gulp.watch jade_Files       , ['compile-jade']
+#  gulp.watch jade_Flare_Files , ['compile-jade']
   gulp.watch coffee_Files     , ['compile-coffee']
 
