@@ -14,8 +14,9 @@ runSequence = require 'run-sequence'
 base_Source_Folder    = '../../'
 angular_Project       = base_Source_Folder.path_Combine 'code/TM_Angular'
 target_Folder         = base_Source_Folder.path_Combine 'code/TM_Angular/build'
-jade_Files            = base_Source_Folder.path_Combine 'code/TM_Angular/src/jade/**/*.jade'
-jade_Flare_Files      = base_Source_Folder.path_Combine 'code/TM_Flare//**/*.jade'
+#jade_Files            = base_Source_Folder.path_Combine 'code/TM_Angular/src/jade/**/*.jade'
+jade_Files            = base_Source_Folder.path_Combine 'code/TM_Flare/component/**/*.jade'
+jade_Flare_Files      = base_Source_Folder.path_Combine 'code/TM_Flare/**/*.jade'
 jade_Component_Folder = base_Source_Folder.path_Combine 'code/TM_Flare/views'
 coffee_Files          = base_Source_Folder.path_Combine 'code/TM_Angular/src/coffee/**/*.coffee'
 
@@ -32,6 +33,7 @@ gulp.task 'combine-js', ->
     angular_Project.path_Combine 'bower_components/jade/runtime.js'
     angular_Project.path_Combine 'bower_components/angular-slider/slider.js'
     angular_Project.path_Combine 'bower_components/angular-ui-router/release/angular-ui-router.min.js'
+    angular_Project.path_Combine 'bower_components/chai/chai.js'
   ]
 
 
@@ -55,7 +57,7 @@ gulp.task 'compile-jade', ->
   gulp.src jade_Files
       .pipe plumber()
       .pipe changed(target_Folder_Html, {extension: '.html'})
-      #.pipe debug({title: "[compile-jade]"})
+      .pipe debug({title: "[compile-jade]"})
       .pipe jade()
       .pipe gulp.dest target_Folder_Html
 
