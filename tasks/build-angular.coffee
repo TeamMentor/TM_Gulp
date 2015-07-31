@@ -18,7 +18,7 @@ target_Folder         = base_Source_Folder.path_Combine 'code/TM_Angular/build'
 jade_Files            = base_Source_Folder.path_Combine 'code/TM_Flare/component/**/*.jade'
 jade_Flare_Files      = base_Source_Folder.path_Combine 'code/TM_Flare/**/*.jade'
 jade_Component_Folder = base_Source_Folder.path_Combine 'code/TM_Flare/views'
-coffee_Files          = base_Source_Folder.path_Combine 'code/TM_Angular/src/coffee/**/*.coffee'
+coffee_Files          = base_Source_Folder.path_Combine 'code/TM_Angular/src/**/*.coffee'
 
 concat_Code_File    = 'js/code.js'
 concat_Css_File     = 'css/lib.css'
