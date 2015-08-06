@@ -14,16 +14,15 @@ runSequence = require 'run-sequence'
 base_Source_Folder    = '../../'
 angular_Project       = base_Source_Folder.path_Combine 'code/TM_Angular'
 target_Folder         = base_Source_Folder.path_Combine 'code/TM_Angular/build'
-#jade_Files            = base_Source_Folder.path_Combine 'code/TM_Angular/src/jade/**/*.jade'
 jade_Files            = base_Source_Folder.path_Combine 'code/TM_Flare/component/**/*.jade'
 jade_Flare_Files      = base_Source_Folder.path_Combine 'code/TM_Flare/**/*.jade'
 jade_Component_Folder = base_Source_Folder.path_Combine 'code/TM_Flare/views'
 coffee_Files          = base_Source_Folder.path_Combine 'code/TM_Angular/src/**/*.coffee'
 
-concat_Code_File    = 'js/code.js'
-concat_Css_File     = 'css/lib.css'
-concat_Jade_Js_File = 'js/jade.js'
-concat_Lib_File     = 'js/lib.js'
+concat_Code_File        = 'js/code.js'
+concat_Components_File  = 'js/components.js'
+concat_Css_File         = 'css/lib.css'
+concat_Lib_File         = 'js/lib.js'
 
 
 gulp.task 'combine-js', ->
@@ -52,52 +51,26 @@ gulp.task 'combine-css', ->
       .pipe concat concat_Css_File
       .pipe gulp.dest target_Folder
 
-#gulp.task 'compile-jade', ->
-#  target_Folder_Html = target_Folder.path_Combine 'html'
-#  gulp.src jade_Files
-#      .pipe plumber()
-#      .pipe changed(target_Folder_Html, {extension: '.html'})
-#      .pipe debug({title: "[compile-jade]"})
-#      .pipe jade()
-#      .pipe gulp.dest target_Folder_Html
-
-gulp.task 'compile-jade-components',->
-  # this needs to be converted into a gulp plugin (or find one that works)
-
-  jade_Compiler = require('gulp-jade/node_modules/jade');
-
-  jade_Js = ""
-  for file in jade_Component_Folder.files()
-    file_name = file.file_Name_Without_Extension()
-    options = {name : "jade_#{file_name}" }
-    jsFunctionString = jade_Compiler.compileFileClient(file, options);
-    jade_Js += jsFunctionString + '\n\n'
-
-  target_File = target_Folder.path_Combine(concat_Jade_Js_File)
-  jade_Js.save_As target_File
-
-  return
-  #options = { client: true }
-  #gulp.src jade_Component_Files
-  #    .pipe debug({title: "[coffee]"})
-  #    #.pipe jade(options)
-  #    .pipe concat concat_Jade_Js_File
-  #    .pipe gulp.dest target_Folder
-
-
 gulp.task 'compile-coffee', ->
-  gulp.src coffee_Files
+  gulp.src [coffee_Files]
       #.pipe debug({title: "[coffee]"})
       .pipe plumber()
       .pipe coffee()
       .pipe concat concat_Code_File
       .pipe gulp.dest target_Folder
 
+gulp.task 'compile-coffee-js', ->
+  gulp.src [coffee_Files]
+  #.pipe debug({title: "[coffee]"})
+      .pipe plumber()
+      .pipe coffee()
+      .pipe gulp.dest target_Folder.append('-js')
+
 gulp.task 'angular', ->
-  runSequence [ 'combine-js', 'combine-css', 'compile-jade-components' , 'compile-coffee']
+  runSequence [ 'combine-js', 'combine-css' , 'compile-coffee', 'compile-coffee-js']
 
 gulp.task 'angular-watch', ['angular'], ()->
 #  gulp.watch jade_Files       , ['compile-jade']
 #  gulp.watch jade_Flare_Files , ['compile-jade']
-  gulp.watch coffee_Files     , ['compile-coffee']
+  gulp.watch coffee_Files     , ['compile-coffee',  'compile-coffee-js']
 
