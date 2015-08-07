@@ -28,9 +28,9 @@ concat_Lib_File         = 'js/lib.js'
 gulp.task 'combine-js', ->
   source_Files = [
     angular_Project.path_Combine 'bower_components/angular/angular.js'
-    angular_Project.path_Combine 'bower_components/angular-foundation-bower/mm-foundation-tpls.min.js'
+    #angular_Project.path_Combine 'bower_components/angular-foundation-bower/mm-foundation-tpls.min.js'
     angular_Project.path_Combine 'bower_components/jade/runtime.js'
-    angular_Project.path_Combine 'bower_components/angular-slider/slider.js'
+    #angular_Project.path_Combine 'bower_components/angular-slider/slider.js'
     angular_Project.path_Combine 'bower_components/angular-ui-router/release/angular-ui-router.min.js'
     angular_Project.path_Combine 'bower_components/chai/chai.js'
   ]
