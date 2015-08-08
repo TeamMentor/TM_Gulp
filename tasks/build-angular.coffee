@@ -21,7 +21,7 @@ coffee_Files          = base_Source_Folder.path_Combine 'code/TM_Angular/src/**/
 
 concat_Code_File        = 'js/code.js'
 concat_Components_File  = 'js/components.js'
-concat_Css_File         = 'css/lib.css'
+#concat_Css_File         = 'css/lib.css'
 concat_Lib_File         = 'js/lib.js'
 
 
@@ -42,14 +42,14 @@ gulp.task 'combine-js', ->
       #.pipe uglify()                               # this takes a good number of secs to go from 1M to 300k so it might be better to use the minified versions directly
       .pipe gulp.dest target_Folder
 
-gulp.task 'combine-css', ->
-  source_Files = [
-    #angular_Project.path_Combine 'bower_components/angular-ui-select/dist/select.css'
-    angular_Project.path_Combine 'bower_components/angular-slider/slider.css'
-  ]
-  gulp.src source_Files
-      .pipe concat concat_Css_File
-      .pipe gulp.dest target_Folder
+#gulp.task 'combine-css', ->
+#  source_Files = [
+#    #angular_Project.path_Combine 'bower_components/angular-ui-select/dist/select.css'
+#    angular_Project.path_Combine 'bower_components/angular-slider/slider.css'
+#  ]
+#  gulp.src source_Files
+#      .pipe concat concat_Css_File
+#      .pipe gulp.dest target_Folder
 
 gulp.task 'compile-coffee', ->
   gulp.src [coffee_Files]
@@ -67,7 +67,7 @@ gulp.task 'compile-coffee-js', ->
       .pipe gulp.dest target_Folder.append('-js')
 
 gulp.task 'angular', ->
-  runSequence [ 'combine-js', 'combine-css' , 'compile-coffee', 'compile-coffee-js']
+  runSequence [ 'combine-js' , 'compile-coffee', 'compile-coffee-js']
 
 gulp.task 'angular-watch', ['angular'], ()->
 #  gulp.watch jade_Files       , ['compile-jade']
