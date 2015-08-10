@@ -29,10 +29,10 @@ gulp.task 'combine-js', ->
   source_Files = [
     angular_Project.path_Combine 'bower_components/angular/angular.js'
     #angular_Project.path_Combine 'bower_components/angular-foundation-bower/mm-foundation-tpls.min.js'
-    angular_Project.path_Combine 'bower_components/jade/runtime.js'
+    #angular_Project.path_Combine 'bower_components/jade/runtime.js'
     #angular_Project.path_Combine 'bower_components/angular-slider/slider.js'
     angular_Project.path_Combine 'bower_components/angular-ui-router/release/angular-ui-router.min.js'
-    angular_Project.path_Combine 'bower_components/chai/chai.js'
+    #angular_Project.path_Combine 'bower_components/chai/chai.js'
   ]
 
 
@@ -52,7 +52,7 @@ gulp.task 'combine-js', ->
 #      .pipe gulp.dest target_Folder
 
 gulp.task 'compile-coffee', ->
-  gulp.src [coffee_Files]
+  gulp.src [coffee_Files ,  "!../../code/TM_Angular/src/graph-db-data.coffee" ]
       #.pipe debug({title: "[coffee]"})
       .pipe plumber()
       .pipe coffee()
