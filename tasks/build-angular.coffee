@@ -28,11 +28,7 @@ concat_Lib_File         = 'js/lib.js'
 gulp.task 'combine-js', ->
   source_Files = [
     angular_Project.path_Combine 'bower_components/angular/angular.min.js'
-    #angular_Project.path_Combine 'bower_components/angular-foundation-bower/mm-foundation-tpls.min.js'
-    #angular_Project.path_Combine 'bower_components/jade/runtime.js'
-    #angular_Project.path_Combine 'bower_components/angular-slider/slider.js'
     angular_Project.path_Combine 'bower_components/angular-ui-router/release/angular-ui-router.min.js'
-    #angular_Project.path_Combine 'bower_components/chai/chai.js'
   ]
 
 
@@ -70,7 +66,5 @@ gulp.task 'angular', ->
   runSequence [ 'combine-js' , 'compile-coffee', 'compile-coffee-js']
 
 gulp.task 'angular-watch', ['angular'], ()->
-#  gulp.watch jade_Files       , ['compile-jade']
-#  gulp.watch jade_Flare_Files , ['compile-jade']
   gulp.watch coffee_Files     , ['compile-coffee',  'compile-coffee-js']
 
